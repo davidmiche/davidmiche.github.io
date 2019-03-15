@@ -39,6 +39,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _kmitc_kmitc_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./kmitc/kmitc.component */ "./src/app/kmitc/kmitc.component.ts");
 /* harmony import */ var _employee_employee_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./employee/employee.component */ "./src/app/employee/employee.component.ts");
+/* harmony import */ var _notfound_notfound_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./notfound/notfound.component */ "./src/app/notfound/notfound.component.ts");
+
 
 
 
@@ -46,9 +48,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var routes = [
-    { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: 'kmitc', component: _kmitc_kmitc_component__WEBPACK_IMPORTED_MODULE_4__["KmitcComponent"] },
-    { path: 'home', component: _employee_employee_component__WEBPACK_IMPORTED_MODULE_5__["EmployeeComponent"] }
+    { path: 'home', component: _employee_employee_component__WEBPACK_IMPORTED_MODULE_5__["EmployeeComponent"] },
+    { path: '', redirectTo: '/home', pathMatch: 'full' },
+    { path: '**', component: _notfound_notfound_component__WEBPACK_IMPORTED_MODULE_6__["NotfoundComponent"] }
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
@@ -206,6 +209,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _kmitc_kmitc_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./kmitc/kmitc.component */ "./src/app/kmitc/kmitc.component.ts");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _employee_employee_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./employee/employee.component */ "./src/app/employee/employee.component.ts");
+/* harmony import */ var _notfound_notfound_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./notfound/notfound.component */ "./src/app/notfound/notfound.component.ts");
+
 
 
 
@@ -231,7 +236,8 @@ var AppModule = /** @class */ (function () {
             declarations: [
                 _app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"],
                 _kmitc_kmitc_component__WEBPACK_IMPORTED_MODULE_13__["KmitcComponent"],
-                _employee_employee_component__WEBPACK_IMPORTED_MODULE_15__["EmployeeComponent"]
+                _employee_employee_component__WEBPACK_IMPORTED_MODULE_15__["EmployeeComponent"],
+                _notfound_notfound_component__WEBPACK_IMPORTED_MODULE_16__["NotfoundComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -465,7 +471,7 @@ module.exports = ".container-fluid,.jumbotron,.btn-info,body {\r\n  background: 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container-fluid\">\n  <div class=\"jumbotron\">\n    <h1 class=\"text-center\"> {{title}} </h1>\n    <div class=\" form-group text-center\" *ngIf=\"!giveAccess\">\n      <h2 class=\"bg-danger\">Enter the ViewAccess Password</h2>\n      <input class=\"form-control\" #text type=\"password\">\n      <button class=\"btn btn-primary\" (click)=\"check(text)\">Check</button>\n    </div>\n  </div>\n  <div *ngIf=\"giveAccess\" class=\"holder\">\n    <div class=\"card\" *ngFor=\"let u of kmit\">\n      <div class=\"card-header\">\n        <h3> {{u.firstname}} {{u.lastname}}</h3>\n      </div>\n      <div class=\"card-body\">\n        <ul class=\"list-group list-group-flush\">\n          <li class=\"list-group-item\">Context ID: {{u['@contextid']}} </li>\n          <li class=\"list-group-item\">ID: {{u['@id']}} </li>\n          <li class=\"list-group-item\">Email: {{u.email}} </li>\n          <li *ngIf=\"phone\" #phone class=\"list-group-item\">Phone: {{u.phone1}} </li>\n          <li class=\"list-group-item\">Roll No: {{u.custom_fields.custom_field[1].field_data}}</li>\n          <li class=\"list-group-item\">Section: {{u.custom_fields.custom_field[3].field_data}} </li>\n          <li class=\"list-group-item\">Passcode : {{u.custom_fields.custom_field[12].field_data}} </li>\n          <li class=\"list-group-item\">First Access: {{u.firstaccess}} </li>\n        </ul>\n\n      </div>\n    </div>\n    <button class=\" btn btn-darkfooter\" (click)=\"phone=!phone\">----------</button>\n  </div>\n\n</div>\n"
+module.exports = "<div class=\"container-fluid\">\n  <div class=\"jumbotron\">\n    <h1 class=\"text-center\"> {{title}} </h1>\n    <div class=\" form-group text-center\" *ngIf=\"!giveAccess\">\n      <h2 class=\"bg-danger\">Enter the ViewAccess Password</h2>\n      <input (keyup.enter)=\"check(text)\" class=\"form-control\" #text type=\"password\">\n      <button class=\"btn btn-primary\" (click)=\"check(text)\">Check</button>\n    </div>\n  </div>\n  <div *ngIf=\"giveAccess\" class=\"holder\">\n    <div class=\"card\" *ngFor=\"let u of kmit\">\n      <div class=\"card-header\">\n        <h3> {{u.firstname}} {{u.lastname}}</h3>\n      </div>\n      <div class=\"card-body\">\n        <ul class=\"list-group list-group-flush\">\n          <li class=\"list-group-item\">Context ID: {{u['@contextid']}} </li>\n          <li class=\"list-group-item\">ID: {{u['@id']}} </li>\n          <li class=\"list-group-item\">Email: {{u.email}} </li>\n          <li *ngIf=\"phone\" #phone class=\"list-group-item\">Phone: {{u.phone1}} </li>\n          <li class=\"list-group-item\">Roll No: {{u.custom_fields.custom_field[1].field_data}}</li>\n          <li class=\"list-group-item\">Section: {{u.custom_fields.custom_field[3].field_data}} </li>\n          <li class=\"list-group-item\">Passcode : {{u.custom_fields.custom_field[12].field_data}} </li>\n          <li class=\"list-group-item\">First Access: {{u.firstaccess}} </li>\n        </ul>\n\n      </div>\n    </div>\n    <button class=\" btn btn-darkfooter\" (click)=\"phone=!phone\">----------</button>\n  </div>\n\n</div>\n"
 
 /***/ }),
 
@@ -482,12 +488,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _database_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../database.service */ "./src/app/database.service.ts");
+/* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ngx-toastr */ "./node_modules/ngx-toastr/fesm5/ngx-toastr.js");
+
 
 
 
 var KmitcComponent = /** @class */ (function () {
-    function KmitcComponent(service) {
+    function KmitcComponent(service, toastr) {
         this.service = service;
+        this.toastr = toastr;
         this.giveAccess = false;
         this.kmit = [];
         this.abcdef = 'Kmit123$%^';
@@ -505,8 +514,10 @@ var KmitcComponent = /** @class */ (function () {
     KmitcComponent.prototype.check = function (e) {
         if (e.value == this.abcdef) {
             this.giveAccess = true;
+            this.toastr.success('Congrats Unlocked All the Users', 'KMIT All Users Unlocked');
         }
         else {
+            this.toastr.error('You have entered wrong password', 'Don\'t try Again');
             alert('Wrong Place Boii');
         }
     };
@@ -516,9 +527,66 @@ var KmitcComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./kmitc.component.html */ "./src/app/kmitc/kmitc.component.html"),
             styles: [__webpack_require__(/*! ./kmitc.component.css */ "./src/app/kmitc/kmitc.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_database_service__WEBPACK_IMPORTED_MODULE_2__["DatabaseService"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_database_service__WEBPACK_IMPORTED_MODULE_2__["DatabaseService"],
+            ngx_toastr__WEBPACK_IMPORTED_MODULE_3__["ToastrService"]])
     ], KmitcComponent);
     return KmitcComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/notfound/notfound.component.css":
+/*!*************************************************!*\
+  !*** ./src/app/notfound/notfound.component.css ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\r\n\r\n.error-template {\r\n  padding: 40px 15px;\r\n  text-align: center;\r\n}\r\n\r\n.error-actions {\r\n  margin-top: 15px;\r\n  margin-bottom: 15px;\r\n}\r\n\r\n.error-actions .btn {\r\n  margin-right: 10px;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbm90Zm91bmQvbm90Zm91bmQuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOztBQUVBO0VBQ0Usa0JBQWtCO0VBQ2xCLGtCQUFrQjtBQUNwQjs7QUFFQTtFQUNFLGdCQUFnQjtFQUNoQixtQkFBbUI7QUFDckI7O0FBRUE7RUFDRSxrQkFBa0I7QUFDcEIiLCJmaWxlIjoic3JjL2FwcC9ub3Rmb3VuZC9ub3Rmb3VuZC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiXHJcblxyXG4uZXJyb3ItdGVtcGxhdGUge1xyXG4gIHBhZGRpbmc6IDQwcHggMTVweDtcclxuICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbn1cclxuXHJcbi5lcnJvci1hY3Rpb25zIHtcclxuICBtYXJnaW4tdG9wOiAxNXB4O1xyXG4gIG1hcmdpbi1ib3R0b206IDE1cHg7XHJcbn1cclxuXHJcbi5lcnJvci1hY3Rpb25zIC5idG4ge1xyXG4gIG1hcmdpbi1yaWdodDogMTBweDtcclxufVxyXG4iXX0= */"
+
+/***/ }),
+
+/***/ "./src/app/notfound/notfound.component.html":
+/*!**************************************************!*\
+  !*** ./src/app/notfound/notfound.component.html ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"container\">\r\n  <div class=\"row\">\r\n    <div class=\"col-md-12\">\r\n      <div class=\"error-template\">\r\n        <h1>\r\n          Wrong URL Boii</h1>\r\n        <h2>\r\n          People call it Four O Four Error</h2>\r\n        <div class=\"error-details\">\r\n          So Shut up and get out of here!!\r\n        </div>\r\n        <div class=\"error-actions\">\r\n          <a routerLink=\"/home\" class=\"btn btn-primary btn-block btn-lg\"><span class=\"glyphicon glyphicon-home\"></span>\r\n            Take Me Home </a>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
+
+/***/ }),
+
+/***/ "./src/app/notfound/notfound.component.ts":
+/*!************************************************!*\
+  !*** ./src/app/notfound/notfound.component.ts ***!
+  \************************************************/
+/*! exports provided: NotfoundComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NotfoundComponent", function() { return NotfoundComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var NotfoundComponent = /** @class */ (function () {
+    function NotfoundComponent() {
+    }
+    NotfoundComponent.prototype.ngOnInit = function () {
+    };
+    NotfoundComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-notfound',
+            template: __webpack_require__(/*! ./notfound.component.html */ "./src/app/notfound/notfound.component.html"),
+            styles: [__webpack_require__(/*! ./notfound.component.css */ "./src/app/notfound/notfound.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], NotfoundComponent);
+    return NotfoundComponent;
 }());
 
 
