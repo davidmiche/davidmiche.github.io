@@ -50,7 +50,7 @@ __webpack_require__.r(__webpack_exports__);
 var routes = [
     { path: 'kmitc', component: _kmitc_kmitc_component__WEBPACK_IMPORTED_MODULE_4__["KmitcComponent"] },
     { path: 'home', component: _employee_employee_component__WEBPACK_IMPORTED_MODULE_5__["EmployeeComponent"] },
-    { path: '', redirectTo: '/home', pathMatch: 'full' },
+    { path: '', component: _employee_employee_component__WEBPACK_IMPORTED_MODULE_5__["EmployeeComponent"] },
     { path: '**', component: _notfound_notfound_component__WEBPACK_IMPORTED_MODULE_6__["NotfoundComponent"] }
 ];
 var AppRoutingModule = /** @class */ (function () {
@@ -555,7 +555,7 @@ module.exports = "\r\n\r\n.error-template {\r\n  padding: 40px 15px;\r\n  text-a
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n  <div class=\"row\">\r\n    <div class=\"col-md-12\">\r\n      <div class=\"error-template\">\r\n        <h1>\r\n          Wrong URL Boii</h1>\r\n        <h2>\r\n          People call it Four O Four Error</h2>\r\n        <div class=\"error-details\">\r\n          So Shut up and get out of here!!\r\n        </div>\r\n        <div class=\"error-actions\">\r\n          <a routerLink=\"/home\" class=\"btn btn-primary btn-block btn-lg\"><span class=\"glyphicon glyphicon-home\"></span>\r\n            Take Me Home </a>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<div class=\"container\">\r\n  <div class=\"row\">\r\n    <div class=\"col-md-12\">\r\n      <div class=\"error-template\">\r\n        <h1>\r\n          Wrong URL Boii</h1>\r\n        <h2>\r\n          People call it Four O Four Error</h2>\r\n        <div class=\"error-details\">\r\n          So Shut up and get out of here!!\r\n        </div>\r\n        <div class=\"error-actions\">\r\n          <a routerLink=\"\" class=\"btn btn-primary btn-block btn-lg\"><span class=\"glyphicon glyphicon-home\"></span>\r\n            Take Me Home </a>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
